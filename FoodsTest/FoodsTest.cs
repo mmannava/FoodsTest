@@ -47,8 +47,16 @@ namespace FoodsTest
             Task<List<Program.Food>> foods = p.getAllFoods();
             foods_list = foods.Result;
             int total_proteins = p.calculateProteins(foods_list);
-            Assert.AreEqual(63, total_proteins);
+            Assert.AreEqual(47, total_proteins);
         }
 
+        [Test]
+        public void GetTotalFatContent()
+        {
+            Task<List<Program.Food>> foods = p.getAllFoods();
+            foods_list = foods.Result;
+            int total_fats = p.calculateFats(foods_list);
+            Assert.AreEqual(14, total_fats);
+        }
     }
 }
