@@ -12,13 +12,12 @@ namespace FoodsTest
     [TestFixture]
     public class FoodsTests
     {
+              
         List<Program.Food> foods_list;
-
+        Program p = new Program();
         [Test]
         public void AllFoodsData()
-        {
-            Program p = new Program();
-
+        {           
             Task<List<Program.Food>> foods = p.getAllFoods();
             foods_list = foods.Result;
             foreach (Program.Food food in foods_list)
@@ -30,6 +29,25 @@ namespace FoodsTest
                 Assert.IsNotNull(food.proteins);
                 Assert.IsNotNull(food.fats);
             }
+        }
+
+        [Test]
+        public void GetTotalCarbContent()
+        {
+            Task<List<Program.Food>> foods = p.getAllFoods();
+            foods_list = foods.Result;
+            int total_carbs = p.calculateCarbs(foods_list);
+            Assert.AreEqual(63, total_carbs);
+
+        }
+
+        [Test]
+        public void GetTotalProteinContent()
+        {
+            Task<List<Program.Food>> foods = p.getAllFoods();
+            foods_list = foods.Result;
+            int total_proteins = p.calculateProteins(foods_list);
+            Assert.AreEqual(63, total_proteins);
         }
 
     }
