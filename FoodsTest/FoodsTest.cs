@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using Foods;
-using static Foods.Program;
+
 
 namespace FoodsTest
 {
     [TestFixture]
     public class FoodsTests
     {
-        List<Food> foods;
+        List<Program.Food> foods;
 
         [Test]
         public void Checkdetails()
